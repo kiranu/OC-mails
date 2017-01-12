@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:output method="html" encoding="UTF-8" indent="yes" omit-xml-declaration="yes" />
+		<xsl:template match="/">
+<xsl:choose>
+		<xsl:when test="/Msg/Props/Prop[@prop_name = 'gift_message']/@val != ''">
+		 <xsl:choose>
+		<!-- Start BHLDN Gift Message -->
+		<xsl:when test="/Msg/Props/Prop[@prop_name = 'brand']/@val = '06'">
+
+			<table width="312" border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column">
+				<tr>
+					<td align="left" valign="top" style="background-color:#fcfaf6; height:160px; padding:14px 18px; margin-bottom:16px; font-family:'Times New Roman',Serif; color:#666666;">
+						<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+							<tr>
+								<td style="padding:0px 0px 12px 0px; background-color:#fcfaf6; font-size:12px; text-transform:uppercase; border-bottom:#dcdcdc solid 1px;  padding-bottom:12px; font-family:'Times New Roman',Serif; color:#666666;" align="left" valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_gift_message']/@val" /></td>
+							</tr>
+							<tr>
+								<td style="padding:14px 18px; background-color:#fcfaf6; font-size:12px; line-height:20px; padding:14px 0px; font-family:'Times New Roman',Serif; color:#666666;" align="left" valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'gift_message']/@val" /></td>
+							</tr>
+						</table> 
+					</td>
+				</tr>
+			</table>
+		</xsl:when>
+		<!-- End BHLDN Gift Message -->
+		
+		<!-- Start Free People Gift Message -->
+		<xsl:when test="/Msg/Props/Prop[@prop_name = 'brand']/@val = '03'">
+			<table width="275" border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column">
+				<tr>
+					<td align="left" valign="top" style="height:200px; padding:0px; margin-bottom:16px; font-family:'Times New Roman',Serif; color:#666666;">
+						<table width="240" border="0" align="left" cellpadding="0" cellspacing="0">
+							<tr>
+								<td align="left" style="padding:0px 0px; font-size:20px; font-family: 'Crimson Text', serif; color:#000000;  text-transform:uppercase; letter-spacing:2px;" valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_gift_message']/@val" /></td>
+							</tr>
+							<tr>
+								<td  style="padding:14px 18px; font-size:13px; line-height:20px; padding:14px 0px; font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif; color:#666666;" align="left" valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'gift_message']/@val" /></td>
+							</tr>
+						</table> 
+					</td>
+				</tr>
+			</table>
+		</xsl:when>
+		 <!-- End Free People Gift Message -->
+		 
+		 <xsl:when test="/Msg/Props/Prop[@prop_name = 'brand']/@val = '01' or /Msg/Props/Prop[@prop_name = 'brand']/@val = '07'">
+			<table width="307" border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column">
+				<tr>
+					<td align="left" valign="top" style="margin-bottom:16px; padding-top:30px; font-family:'Times New Roman',Serif; color:#666666;">
+						<table width="240" border="0" align="left" cellpadding="0" cellspacing="0">
+							<tr>
+								<td align="left" valign="top" style="background-color:#ffffff; font-size:16px; letter-spacing: 4px; text-transform:uppercase; padding-bottom:30px; font-family:Times,Serif; color:#707070;"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_gift_message']/@val" /></td>
+							</tr>
+							
+							<tr>
+								<td style="padding:0px; font-size:12px; line-height:20px; font-family: Helvetica,serif; color:#666666;" align="left" valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'gift_message']/@val" /></td>
+							</tr>
+						</table> 
+					</td>
+				</tr>
+			</table> 
+		 </xsl:when>
+		 
+		 <!-- Start Terrain Gift Message -->
+		<xsl:when test="/Msg/Props/Prop[@prop_name = 'brand']/@val = '05'">
+
+			<table width="272" height="200" border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column">
+				<tr>
+					<td align="left" valign="top" style="background-color:#edede9; padding:20px; margin-bottom:16px; font-family: 'Questrial', sans-serif; color:#444444;">
+						<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+							<tr>
+								<td style="padding:0px 0px 25px 0px; background-color:#edede9; font-size:19px; font-family: 'Questrial', sans-serif; color:#444444; letter-spacing:1px; text-transform:uppercase;" align="left" valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_gift_message']/@val" /></td>
+							</tr>
+							<tr>
+								<td style="padding:0px; background-color:#edede9; font-size:12px; line-height:20px; font-family:'Palatino Linotype', 'Book Antiqua', Palatino, serif; color:#444444;" align="left" valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'gift_message']/@val" /></td>
+							</tr>
+						</table> 
+					</td>
+				</tr>
+			</table>
+		</xsl:when>
+		 <!-- End Terrain Billing Total -->
+		 
+		<!-- Start UO Gift Message -->
+		<xsl:when test="/Msg/Props/Prop[@prop_name = 'brand']/@val = '02'">
+			<table width="260" border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; margin-bottom: 30px;"  class="two-column">
+				<tr>
+					<td align="left" valign="top" style="padding:0px 0px 30px 0px;">
+						<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+							<tr>
+								<td style="padding-bottom:10px; font-size:25px; font-family: 'Francois One', Helvetica, sans-serif !important; color:#222222; margin:0px; border-bottom:solid 1px #aaaaaa;" align="left" valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_gift_message']/@val" /></td>
+							</tr>
+							<tr>
+								<td align="left" valign="top" style="padding:20px 0px 0px; font-size:14px; font-family:Helvetica,Sans-Serif; color:#707070;"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'gift_message']/@val" /></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</xsl:when>		 
+		 <!-- End UO Gift Message -->
+
+		 </xsl:choose>
+		 </xsl:when>
+		 
+	<!-- Start Default blocking if no message -->
+
+	<xsl:otherwise>
+			<table width="272" border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column">
+				<tr>
+					<td align="left" valign="top" style="margin-bottom:16px; font-family:'Times New Roman',Serif; color:#666666;">
+						<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+							<tr>
+								<td style="font-size:16px;letter-spacing:4px;text-transform:uppercase;padding-bottom:11px;font-family:Times,Serif;color:#707070" align="left" valign="top"></td>
+							</tr>
+							<tr>
+								<td style="padding:14px 18px; font-size:12px; line-height:20px; padding:14px 0px; font-family:'Times New Roman',Serif; color:#666666;" align="left" valign="top"></td>
+							</tr>
+						</table> 
+					</td>
+				</tr> 
+			</table>
+	</xsl:otherwise> 
+	<!-- End Default blocking if no message -->
+</xsl:choose>
+
+		 
+	</xsl:template>
+</xsl:stylesheet>

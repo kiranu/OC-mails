@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:output method="html" encoding="UTF-8" indent="yes" omit-xml-declaration="yes" />
+		<xsl:template match="/">
+		 <xsl:choose>
+			<xsl:when test="/Msg/Props/Prop[@prop_name = 'country']/@val = 'US'">
+				<td><span ><a style="text-decoration:none; font-size:14px; font-family:helvetica,Seif;  color:#222222; " href="http://www.urbanoutfitters.com/urban/uorewards/index.jsp">US-UO&nbsp;Rewards</a></span></td>
+			</xsl:when>
+			<xsl:when test="/Msg/Props/Prop[@prop_name = 'country']/@val = 'CA'">
+				<td><span ><a style="text-decoration:none; font-size:14px; font-family:helvetica,Seif;  color:#222222; " href="http://www.urbanoutfitters.com/urban/uorewards/index.jsp">CA-UO&nbsp;Rewards</a></span></td>
+			</xsl:when>
+			<xsl:when test="/Msg/Props/Prop[@prop_name = 'country']/@val = 'EN'">
+				<td><span ><a style="text-decoration:none; font-size:14px; font-family:helvetica,Seif;  color:#222222; " href="http://www.urbanoutfitters.com/urban/uorewards/index.jsp">EN-UO&nbsp;Rewards</a></span></td>
+			</xsl:when>
+			
+		 <!-- End UO Billing Total -->		 
+		 </xsl:choose>
+	</xsl:template>
+</xsl:stylesheet>

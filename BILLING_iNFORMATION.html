@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output method="html" encoding="UTF-8" indent="yes" omit-xml-declaration="yes" />
+<xsl:template match="/">
+
+	<xsl:choose>
+			<!-- Start Anthro Billing Looping -->
+		<xsl:when test="/Msg/Props/Prop[@prop_name = 'brand']/@val = '01' or /Msg/Props/Prop[@prop_name = 'brand']/@val = '07'">
+			<table width="640" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
+				<!--<tr>
+					<td style="padding:25px 0px 11px 0px; font-size:16px; font-family:'Times New Roman',Serif; text-transform:uppercase; color:#666666; letter-spacing:4px; border-top:solid 1px rgb(220, 220, 220);" align="left" valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_billing_information']/@val" /></td>
+				</tr>-->
+				<tr>
+					<td align="left" valign="top" style="border-top:solid 1px rgb(220, 220, 220); padding:30px 0px 0px 0px;">
+
+						<!-- 2-column 1 Start-->
+						<table width="312" border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column">
+							<tr>
+								<td align="left" valign="top" style="padding:0px; font-family:'Times New Roman',Serif; color:#666666;">
+									<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+										<tr>
+											<td align="left" valign="top" style="font-size:16px; letter-spacing: 4px; text-transform:uppercase;  font-family:'Times New Roman',Serif; color:#666666;"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_billing_address']/@val" /></td>
+										</tr>
+										<tr>
+											<td align="left" valign="top" style="font-size:12px; line-height:20px; padding:20px 0px 30px 0px; font-family: Helvetica,serif; color:#666666;"><span class="address"><xsl:if test="Prop[@prop_name = 'company']/@val != ''">
+											<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'company']/@val" /><br />
+											</xsl:if>
+											<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'fname']/@val" />&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'lname']/@val" /><br />
+											<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address1']/@val" /><br />
+											<xsl:if test="Prop[@prop_name = 'address2']/@val != ''">
+											<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address2']/@val" /><br />
+											</xsl:if>
+											<xsl:if test="Prop[@prop_name = 'address3']/@val != ''">
+											<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address3']/@val" /><br />
+											</xsl:if>
+											<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'city']/@val" />&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'state']/@val" />&#160;&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'zip']/@val" /><br /></span></td>
+										</tr>
+
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- 2-column 1 End-->
+						<!-- 2-column 2 Start  -->
+						<table width="312" border="0" align="right" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column m-left0 m-top15">
+							<tr>
+								<td align="left" valign="top" style="padding:0px; margin-bottom:16px; font-family:'Times New Roman',Serif; color:#666666;">
+									<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+										<tr>
+											<td align="left" valign="top" style="font-size:16px; letter-spacing: 4px; text-transform:uppercase;  font-family:'Times New Roman',Serif; color:#666666;">Payment Method</td>
+										</tr>
+										<xsl:for-each select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord">
+										<tr>
+											<xsl:if test="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord/Prop[@prop_name = 'paymenttype']/@val != 'Gift Card'">
+												<td align="left" valign="top" style="font-size:12px; line-height:20px; padding:20px 0px 30px 0px; font-family: Helvetica,serif; color:#666666;"><xsl:value-of select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord/Prop[@prop_name = 'paymenttype']/@val" /><br />
+												<xsl:value-of select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord/Prop[@prop_name = 'label_ending_in']/@val" /><xsl:value-of select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord/Prop[@prop_name = 'cardnumber']/@val" /></td>
+											</xsl:if>
+										</tr>
+										</xsl:for-each>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- 2-column 2 End-->
+
+					</td>
+				</tr>
+				<tr>
+					<td style="height:11px; border-bottom:#dcdcdc solid 1px; margin-top:11px;" colspan="9" align="left" valign="middle" >&#160;</td>
+				</tr>
+			</table>
+		</xsl:when>
+		<!-- End Anthro Billing Looping -->
+		<!-- Start BHLDN Billing Looping -->
+		<xsl:when test="/Msg/Props/Prop[@prop_name = 'brand']/@val = '06'">
+		
+			 <table width="640" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
+				<tr>
+					<td align="left" valign="top">
+						<table width="312" border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column">
+							<tr>
+								<td style="padding:25px 0px 11px 0px; font-size:18px; font-family:'Times New Roman',Serif; color:#666666;" align="left" valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_billing_information']/@val" /></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td align="left" valign="top">
+						<!-- 2-column 1 Start-->
+						<table width="312" border="0" align="left" height="138" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column">
+							<tr>
+								<td align="left" valign="top" style="background-color:#fcfaf6; height:138px; padding:14px 18px; margin-bottom:16px; font-family:'Times New Roman',Serif; color:#666666;">
+									<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+										<tr>
+											<td align="left" valign="top" style="background-color:#fcfaf6; font-size:12px; text-transform:uppercase; border-bottom:#dcdcdc solid 1px;  padding-bottom:11px; font-family:'Times New Roman',Serif; color:#666666;"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_billing_address']/@val" /></td>
+										</tr>
+										<tr>
+											<td align="left" valign="top" style="padding:14px 18px; background-color:#fcfaf6; font-size:12px; line-height:20px; padding:14px 0px; font-family:'Times New Roman',Serif; color:#666666;"><span class="address"><xsl:if test="Prop[@prop_name = 'company']/@val != ''">
+											<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'company']/@val" /><br />
+											</xsl:if>
+											<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'fname']/@val" />&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'lname']/@val" /><br />
+											<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address1']/@val" /><br />
+											<xsl:if test="Prop[@prop_name = 'address2']/@val != ''">
+											<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address2']/@val" /><br />
+											</xsl:if>
+											<xsl:if test="Prop[@prop_name = 'address3']/@val != ''">
+											<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address3']/@val" /><br />
+											</xsl:if>
+											<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'city']/@val" />&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'state']/@val" />&#160;&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'zip']/@val" /><br /></span></td>
+										</tr>
+
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- 2-column 1 End-->
+						<!-- 2-column 2 Start  -->
+						<table width="312" border="0" align="right" height="138" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column m-left0 m-top15">
+							<tr>
+								<td align="left" valign="top" style="background-color:#fcfaf6; height:138px; padding:14px 18px; margin-bottom:16px; font-family:'Times New Roman',Serif; color:#666666;">
+									<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+										<tr>
+											<td align="left" valign="top" style="background-color:#fcfaf6; font-size:12px; text-transform:uppercase; border-bottom:#dcdcdc solid 1px;  padding-bottom:11px; font-family:'Times New Roman',Serif; color:#666666;">Payment Method</td>
+										</tr>
+										<xsl:for-each select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord">
+										<tr>
+											<xsl:if test="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord/Prop[@prop_name = 'paymenttype']/@val != 'Gift Card'">
+												<td align="left" valign="top" style="padding:14px 18px; background-color:#fcfaf6; font-size:12px; line-height:20px; padding:14px 0px; font-family:'Times New Roman',Serif; color:#666666;"><xsl:value-of select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord/Prop[@prop_name = 'paymenttype']/@val" /><br />
+												<xsl:value-of select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord/Prop[@prop_name = 'label_ending_in']/@val" />&#160;<xsl:value-of select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord/Prop[@prop_name = 'cardnumber']/@val" /></td>
+											</xsl:if>
+										</tr>
+										</xsl:for-each>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- 2-column 2 End-->
+
+					</td>
+				</tr>
+				<tr>
+					<td style="height:11px; border-bottom:#dcdcdc solid 1px; margin-top:11px; " colspan="9" align="left" valign="middle" class="d-product">&#160;</td>
+				</tr>
+			</table>
+		</xsl:when>
+		<!-- End BHLDN Billing Looping -->
+		<!-- Start Free People Billing Looping -->
+		<xsl:when test="/Msg/Props/Prop[@prop_name = 'brand']/@val = '03'">
+			<table align="center" border="0" cellpadding="0" cellspacing="0" class="main" width="640">
+				<tbody>
+					<tr>
+						<td align="left" style="padding:18px 0px 11px; font-size:20px; font-family: Perpetua,Baskerville,Big Caslon,Palatino Linotype,Palatino,URW Palladio L,Nimbus Roman No9 L,serif; color:#000000; text-transform:uppercase; letter-spacing:2px; border-top: 1px solid #dad7d6;" valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_billing_information']/@val" /></td>
+					</tr>
+					<tr>
+						<td align="left" valign="top" ><!-- 2-column 1 Start-->
+						<table align="left" border="0" cellpadding="0" cellspacing="0" class="two-column" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="312">
+							<tbody>
+								<tr>
+									<td align="left" style="margin-bottom:16px; font-family:'Times New Roman',Serif;" valign="top">
+									<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+										<tbody>
+											<tr>
+												<td align="left" valign="top" style="padding:0px 0px; font-size:18px; letter-spacing:2px; font-family: Perpetua,Baskerville,Big Caslon,Palatino Linotype,Palatino,URW Palladio L,Nimbus Roman No9 L,serif; color:#000000;"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_billing_address']/@val" /></td>
+											</tr>
+											<tr>
+												<td align="left" style="font-size:13px; line-height:20px; font-family:Helvetica,Sans-Serif; color:#d7a6a6 ; padding-top:8px;" valign="top">
+												<span class="address"><xsl:if test="Prop[@prop_name = 'company']/@val != ''">
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'company']/@val" /><br />
+												</xsl:if>
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'fname']/@val" />&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'lname']/@val" /><br />
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address1']/@val" /><br />
+												<xsl:if test="Prop[@prop_name = 'address2']/@val != ''">
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address2']/@val" /><br />
+												</xsl:if>
+												<xsl:if test="Prop[@prop_name = 'address3']/@val != ''">
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address3']/@val" /><br />
+												</xsl:if>
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'city']/@val" />&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'state']/@val" />&#160;&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'zip']/@val" /><br /></span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- 2-column 1 End-->
+						
+						<!-- 2-column 2 Start  -->
+						<table align="right" border="0" cellpadding="0" cellspacing="0" class="two-column m-left0 m-top15" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="312">
+							<tbody>
+								<tr>
+									<td align="left" style="margin-bottom:16px; font-family:'Times New Roman',Serif;" valign="top">
+									<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+										<tbody>
+											<tr>
+												<td align="left" style="padding:0px 0px; font-size:18px; letter-spacing:2px; font-family: Perpetua,Baskerville,Big Caslon,Palatino Linotype,Palatino,URW Palladio L,Nimbus Roman No9 L,serif; color:#000000;" valign="top">Payment Method</td>
+											</tr>
+											<xsl:for-each select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord">
+											<tr>
+												<xsl:choose>
+													<xsl:when test="Prop[@prop_name = 'paymenttype']/@val = 'Gift Card'">
+														<td align="left" style="font-size:13px; line-height:20px; font-family:Helvetica,Sans-Serif; color:#d7a6a6 ; padding-top:8px;" valign="top"><xsl:value-of select="Prop[@prop_name = 'paymenttype']/@val" /></td>
+													</xsl:when>
+													<xsl:otherwise>
+														<td align="left" style="font-size:13px; line-height:20px; font-family:Helvetica,Sans-Serif; color:#d7a6a6 ; padding-top:8px;" valign="top"><xsl:value-of select="Prop[@prop_name = 'paymenttype']/@val" /><br />
+														<xsl:value-of select="Prop[@prop_name = 'label_ending_in']/@val" /><xsl:value-of select="Prop[@prop_name = 'cardnumber']/@val" /></td>
+													</xsl:otherwise>
+												</xsl:choose>
+											</tr>
+											</xsl:for-each>
+										</tbody>
+									</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- 2-column 2 End--></td>
+					</tr>
+				</tbody>
+			</table>
+		</xsl:when>
+		<!-- END Free People Billing Looping -->
+		
+		<!-- Start UO Billing Code -->
+		<xsl:when test="/Msg/Props/Prop[@prop_name = 'brand']/@val = '02'">
+			<table width="640" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
+				<tr>
+					<td style="padding-bottom:10px; font-size:25px; font-family: 'Francois One', Helvetica, sans-serif !important; color:#222222; margin:0px; border-bottom:solid 1px #aaaaaa;" align="left" valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_billing_information']/@val" /></td>
+				</tr>
+				<tr>
+					<td align="left" valign="top" style="padding-top:20px; ">
+						<!-- 2-column 1 Start-->
+						<table width="312" border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column">
+							<tr>
+								<td align="left" valign="top" style="padding:0px; font-family:Helvetica,Sans-Serif; color:#666666;">
+									<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+										<tr>
+											<td align="left" valign="top" style="padding-bottom:10px;"><h3 style="font-size:14px; font-family:Helvetica,Sans-Serif; color:#222222; margin:0px; font-weight:500;"><strong><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_billing_address']/@val" /></strong></h3></td>
+										</tr>
+										<tr>
+											<td align="left" valign="top" style="padding:0px; font-size:14px; font-family:Helvetica,Sans-Serif; color:#707070;">
+												<span class="address"><xsl:if test="Prop[@prop_name = 'company']/@val != ''">
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'company']/@val" /><br />
+												</xsl:if>
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'fname']/@val" />&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'lname']/@val" /><br />
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address1']/@val" /><br />
+												<xsl:if test="Prop[@prop_name = 'address2']/@val != ''">
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address2']/@val" /><br />
+												</xsl:if>
+												<xsl:if test="Prop[@prop_name = 'address3']/@val != ''">
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address3']/@val" /><br />
+												</xsl:if>
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'city']/@val" />&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'state']/@val" />&#160;&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'zip']/@val" /><br /></span>
+											</td>
+										</tr>
+
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- 2-column 1 End-->
+						<!-- 2-column 2 Start  -->
+						<table width="312" border="0" align="right" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column m-left0 m-top15">
+							<tr>
+								<td align="left" valign="top" style="padding:0px; font-family:Helvetica,Sans-Serif; color:#666666;">
+									<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+										<tr>
+											<td align="left" valign="top" style="padding-bottom:10px;"><h3 style="font-size:14px; font-family:Helvetica,Sans-Serif; color:#222222; margin:0px; font-weight:500;"><strong>Payment Method</strong></h3></td>
+										</tr>
+										<xsl:for-each select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord">
+										<tr>
+											<xsl:choose>
+												<xsl:when test="Prop[@prop_name = 'paymenttype']/@val = 'Gift Card'">
+													<td align="left" valign="top" style="padding:0px; font-size:14px; font-family:Helvetica,Sans-Serif; color:#707070;"><xsl:value-of select="Prop[@prop_name = 'paymenttype']/@val" /></td>
+												</xsl:when>
+												<xsl:otherwise>
+													<td align="left" valign="top" style="padding:0px; font-size:14px; font-family:Helvetica,Sans-Serif; color:#707070;"><xsl:value-of select="Prop[@prop_name = 'paymenttype']/@val" /><br />
+													<xsl:value-of select="Prop[@prop_name = 'label_ending_in']/@val" /><xsl:value-of select="Prop[@prop_name = 'cardnumber']/@val" /></td>
+												</xsl:otherwise>
+											</xsl:choose>
+										</tr>
+										</xsl:for-each>
+
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- 2-column 2 End-->
+					</td>
+				</tr>
+			</table>
+		</xsl:when>
+		<!-- End UO Billing Code -->
+		
+		
+		
+		
+		<!-- Start TR Billing Code -->
+		<xsl:when test="/Msg/Props/Prop[@prop_name = 'brand']/@val = '05'">
+			 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
+				<tr>
+					<td align="left" valign="top" width="40"></td>
+					<td style="padding:25px 0px 0px 0px; font-size:19px; font-family:'Palatino Linotype', 'Book Antiqua', Palatino, serif; color:#444444; letter-spacing:1px;" align="left"  valign="top"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_billing_information']/@val" /></td>
+					<td align="left" valign="top" width="40"></td>
+				</tr>
+				<tr>
+					<td align="left" valign="top" width="40"></td>
+					<td align="left" valign="top"><img src="http://i.t.e.urbanoutfitters.com/wpm/610/Terrain/TerrainHandDrawnLine.PNG" width="560" style="width:100%"/></td>
+					<td align="left" valign="top" width="40"></td>
+				</tr>
+				<tr>
+					<td align="left" valign="top" width="40"></td>
+					<td align="left" valign="top" style="padding-top:15px; ">
+						<!-- 2-column 1 Start-->
+						<table width="272" border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column">
+							<tr>
+								<td align="left" valign="top" style="padding:0px; font-family:Helvetica,Sans-Serif; color:#666666;">
+									<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+										<tr>
+											<td align="left" valign="top" style="font-size:14px; padding-bottom:11px; font-family: 'Questrial', sans-serif; color:#444444; letter-spacing:1px; text-transform:uppercase;"><xsl:value-of select="/Msg/Props/Prop[@prop_name = 'label_billing_address']/@val" /></td>
+										</tr>
+										<tr>
+											<td align="left" valign="top" style="padding:0px; font-size:13px; line-height:20px; font-family:'Palatino Linotype', 'Book Antiqua', Palatino, serif; color:#444444;">
+												<span class="address"><xsl:if test="Prop[@prop_name = 'company']/@val != ''">
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'company']/@val" /><br />
+												</xsl:if>
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'fname']/@val" />&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'lname']/@val" /><br />
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address1']/@val" /><br />
+												<xsl:if test="Prop[@prop_name = 'address2']/@val != ''">
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address2']/@val" /><br />
+												</xsl:if>
+												<xsl:if test="Prop[@prop_name = 'address3']/@val != ''">
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'address3']/@val" /><br />
+												</xsl:if>
+												<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'city']/@val" />&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'state']/@val" />&#160;&#160;<xsl:value-of select="/Msg/Props/Prop[@prop_name = 'zip']/@val" /><br /></span>
+											</td>
+										</tr>
+
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- 2-column 1 End-->
+						<!-- 2-column 2 Start  -->
+						<table width="272" border="0" align="right" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="two-column m-left0 m-top15">
+							<tr>
+								<td align="left" valign="top" style="padding:0px; font-family:Helvetica,Sans-Serif; color:#666666;">
+									<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+										<tr>
+											<td align="left" valign="top" style="font-size:14px; padding-bottom:11px; font-family: 'Questrial', sans-serif; color:#444444; letter-spacing:1px; text-transform:uppercase;">Payment Method</td>
+										</tr>
+										<xsl:for-each select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord">
+										<tr>
+											<xsl:if test="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord/Prop[@prop_name = 'paymenttype']/@val != 'Gift Card'">
+												<td align="left" valign="top" style="padding:0px; font-size:13px; line-height:20px; font-family:'Palatino Linotype', 'Book Antiqua', Palatino, serif; color:#444444;"><xsl:value-of select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord/Prop[@prop_name = 'paymenttype']/@val" /><br />
+												<xsl:value-of select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord/Prop[@prop_name = 'label_ending_in']/@val" /><xsl:value-of select="/Msg/Props/ordpmts_to_ords/ordpmts_to_ord/Prop[@prop_name = 'cardnumber']/@val" /></td>
+											</xsl:if>
+										</tr>
+										</xsl:for-each>
+
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- 2-column 2 End-->
+					</td>
+					<td align="left" valign="top" width="40"></td>
+				</tr>
+			</table>
+		</xsl:when>
+		<!-- End UO Billing Code -->
+	</xsl:choose>
+
+</xsl:template>
+</xsl:stylesheet>
